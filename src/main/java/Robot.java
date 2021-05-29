@@ -15,4 +15,13 @@ public class Robot {
         }
         throw new RuntimeException("all lockers full");
     }
+
+    public Bag retrieve(Receipt receipt) {
+        for (Locker locker : managedLockers) {
+            if (locker.hasReceipt(receipt)) {
+                return locker.retrieve(receipt);
+            }
+        }
+        return null;
+    }
 }
