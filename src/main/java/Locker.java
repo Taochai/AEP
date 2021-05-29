@@ -34,4 +34,8 @@ public class Locker {
     public boolean isFull() {
         return availableCapacity == 0;
     }
+
+    public boolean hasReceipt(Receipt receipt) {
+        return lockerInfo.containsKey(receipt);
+    }
 }
