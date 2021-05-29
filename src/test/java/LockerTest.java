@@ -23,4 +23,12 @@ public class LockerTest {
         assertEquals("locker full", exception.getMessage());
 
     }
+
+    @Test
+    void should_return_one_bag_when_retrieve_bag_given_valid_receipt() {
+        Locker locker = new Locker(20);
+        Receipt receipt = locker.save(new Bag());
+        Bag bag = locker.retrieve(receipt);
+        assertNotNull(bag);
+    }
 }

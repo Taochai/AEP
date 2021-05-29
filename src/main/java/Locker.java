@@ -14,4 +14,8 @@ public class Locker {
         availableCapacity--;
         return new Receipt();
     }
+
+    public Bag retrieve(Receipt receipt) {
+        return null;
+    }
 }
