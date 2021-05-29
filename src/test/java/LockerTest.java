@@ -48,4 +48,5 @@ public class LockerTest {
 
         Exception exception = assertThrows(Exception.class, () -> locker.retrieve(receipt), "invalid receipt");
     }
+
 }

@@ -27,6 +27,11 @@ public class Locker {
         if (!lockerInfo.containsKey(receipt)) {
             throw new RuntimeException("invalid receipt");
         }
+        availableCapacity++;
         return lockerInfo.remove(receipt);
+    }
+
+    public boolean isFull() {
+        return availableCapacity == 0;
     }
 }
