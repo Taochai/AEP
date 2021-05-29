@@ -16,6 +16,6 @@ public class Locker {
     }
 
     public Bag retrieve(Receipt receipt) {
-        return null;
+        return new Bag();
     }
 }
