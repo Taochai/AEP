@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -29,5 +30,18 @@ public class RobotTest {
 
         assertNotNull(receipt);
         assertTrue(secondLocker.hasReceipt(receipt));
+    }
+
+    @Test
+    void should_throw_exception_when_saving_bag_given_all_lockers_full() {
+        Bag bag = new Bag();
+        Locker firstLocker = new Locker(1);
+        Locker secondLocker = new Locker(1);
+
+        Robot robot = new Robot(Arrays.asList(firstLocker, secondLocker));
+        robot.save(new Bag());
+        robot.save(new Bag());
+
+        assertThrows(Exception.class, () -> robot.save(bag), "all lockers full");
     }
 }

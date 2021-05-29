@@ -13,6 +13,6 @@ public class Robot {
                 return locker.save(bag);
             }
         }
-        return null;
+        throw new RuntimeException("all lockers full");
     }
 }
