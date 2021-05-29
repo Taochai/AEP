@@ -39,4 +39,14 @@ public class LockerTest {
         Exception exception = assertThrows(Exception.class, () -> locker.retrieve(fakeReceipt));
         assertEquals("fake receipt", exception.getMessage());
     }
+
+    @Test
+    void should_throw_exception_when_retrieve_bag_given_used_receipt() {
+        Locker locker = new Locker(20);
+        Receipt receipt = locker.save(new Bag());
+        locker.retrieve(receipt);
+
+        Exception exception = assertThrows(Exception.class, () -> locker.retrieve(receipt));
+        assertEquals("used receipt", exception.getMessage());
+    }
 }
