@@ -22,6 +22,6 @@ public class Robot {
                 return locker.retrieve(receipt);
             }
         }
-        return null;
+        throw new RuntimeException("invalid receipt");
     }
 }
