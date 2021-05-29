@@ -24,14 +24,9 @@ public class Locker {
     }
 
     public Bag retrieve(Receipt receipt) {
-        if (receipt instanceof FakeReceipt) {
-            throw new RuntimeException("fake receipt");
-        }
         if (!lockerInfo.containsKey(receipt)) {
-            throw new RuntimeException("used receipt");
+            throw new RuntimeException("invalid receipt");
         }
-        Bag bag = lockerInfo.get(receipt);
-        lockerInfo.remove(receipt);
-        return bag;
+        return lockerInfo.remove(receipt);
     }
 }

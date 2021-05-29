@@ -27,17 +27,17 @@ public class LockerTest {
     @Test
     void should_return_one_bag_when_retrieve_bag_given_valid_receipt() {
         Locker locker = new Locker(20);
-        Receipt receipt = locker.save(new Bag());
-        Bag bag = locker.retrieve(receipt);
-        assertNotNull(bag);
+        Bag expectedBag = new Bag();
+        Receipt receipt = locker.save(expectedBag);
+        Bag actualBag = locker.retrieve(receipt);
+        assertEquals(expectedBag, actualBag);
     }
 
     @Test
     void should_throw_exception_when_retrieve_bag_given_fake_receipt() {
         Locker locker = new Locker(20);
-        FakeReceipt fakeReceipt = new FakeReceipt();
-        Exception exception = assertThrows(Exception.class, () -> locker.retrieve(fakeReceipt));
-        assertEquals("fake receipt", exception.getMessage());
+        Receipt receipt = new Receipt();
+        Exception exception = assertThrows(Exception.class, () -> locker.retrieve(receipt), "invalid receipt");
     }
 
     @Test
@@ -46,7 +46,6 @@ public class LockerTest {
         Receipt receipt = locker.save(new Bag());
         locker.retrieve(receipt);
 
-        Exception exception = assertThrows(Exception.class, () -> locker.retrieve(receipt));
-        assertEquals("used receipt", exception.getMessage());
+        Exception exception = assertThrows(Exception.class, () -> locker.retrieve(receipt), "invalid receipt");
     }
 }
