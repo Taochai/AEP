@@ -16,6 +16,9 @@ public class Locker {
     }
 
     public Bag retrieve(Receipt receipt) {
+        if (receipt instanceof FakeReceipt) {
+            throw new RuntimeException("fake receipt");
+        }
         return new Bag();
     }
 }
