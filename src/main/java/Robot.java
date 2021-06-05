@@ -1,7 +1,7 @@
 import java.util.List;
 
 public class Robot {
-    private final List<Locker> managedLockers;
+    protected final List<Locker> managedLockers;
 
     public Robot(List<Locker> managedLockers) {
         this.managedLockers = managedLockers;

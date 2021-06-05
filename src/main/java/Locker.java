@@ -38,4 +38,24 @@ public class Locker {
     public boolean hasReceipt(Receipt receipt) {
         return lockerInfo.containsKey(receipt);
     }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public int getAvailableCapacity() {
+        return availableCapacity;
+    }
+
+    public void setAvailableCapacity(int availableCapacity) {
+        this.availableCapacity = availableCapacity;
+    }
+
+    public Map<Receipt, Bag> getLockerInfo() {
+        return lockerInfo;
+    }
+
+    public void setLockerInfo(Map<Receipt, Bag> lockerInfo) {
+        this.lockerInfo = lockerInfo;
+    }
 }
